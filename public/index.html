@@ -1,43 +1,1065 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+<meta charset="UTF-8">
+<title>Google Play – App Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght=300;400;500&family=Google+Sans:wght:400;500&display=swap" rel="stylesheet">
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<style>
+    :root {
+        --play-green: #01875F;
+        --text-primary: #202124;
+        --text-secondary: #5F6368;
+        --divider: #DADCE0;
+        --bg: #FFFFFF;
+    }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    body {
+        margin: 0;
+        font-family: 'Google Sans', Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--text-primary);
+    }
+
+    /* ---------------- TOP BAR ---------------- */
+    .top-bar {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        border-bottom: 1px solid var(--divider);
+        background: #fff;
+    }
+
+    .tabs {
+        display: flex;
+        gap: 24px;
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    .tabs .active {
+        color: var(--play-green);
+        border-bottom: 2px solid var(--play-green);
+        padding-bottom: 4px;
+    }
+
+    /* ---------------- MAIN SECTION ---------------- */
+    .header-area {
+        max-width: 1300px;
+        margin: 40px auto;
+        padding: 0 24px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    /* LEFT SIDE (everything except icon) */
+    .left-block {
+        flex: 1;
+        padding-right: 40px;
+    }
+
+    .app-title {
+        font-size: 48px;
+        font-weight: 500;
+        margin: 0 0 8px;
+    }
+
+    .developer {
+        color: var(--play-green);
+        font-size: 18px;
+        margin: 0 0 6px;
+    }
+
+    .contains {
+        color: var(--text-secondary);
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+    /* ratings row */
+    .meta-row {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .meta-row span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 15px;
+    }
+
+    .meta-row span b {
+        font-size: 14px;
+    }
+
+   
+
+    /* install row */
+    .install-row {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 16px;
+    }
+
+    .install-btn {
+        background: var(--play-green);
+        color: white;
+        border: none;
+        padding: 14px 48px;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 12px;
+        cursor: pointer;
+         text-decoration: none;
+    }
+
+    .action {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--play-green);
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* availability text */
+    .avail {
+        font-size: 14px;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Icon column on the right side */
+  .app-icon {
+    width: 300px;
+    height: 220px;
+    border-radius: 36px;
+    background: #ddd;
+    background-size: contain;     /* show full icon */
+    background-repeat: no-repeat; /* avoid tiling */
+    background-position: center;  /* centered */
+    box-shadow: 0 8px 24px #00000020;
+}
+
+
+    /* Screenshots row */
+    .screenshots {
+        margin-top: 40px;
+        display: flex;
+     
+        overflow-x: auto;
+    }
+
+    .shot {
+    width: 260px;
+    height: 450px;
+    background-size: contain;   /* show full image */
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 16px;
+  
+}
+
+    /* ---------------- ABOUT SECTION ---------------- */
+.section-box {
+    margin-top: 50px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--divider);
+}
+
+.section-title {
+    font-size: 26px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.section-title img {
+    width: 20px;
+}
+
+.section-description {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 16px;
+    white-space: pre-line;
+    margin-left: 30px;
+}
+
+.update-label {
+    margin-top: 22px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 30px;
+}
+
+.update-date {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    margin-left: 30px;
+}
+
+/* Tag bubble chips */
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.tag-chip {
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #f6f7f9;
+    border: 1px solid #e5e6e8;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+/* ---------------- DATA SAFETY SECTION ---------------- */
+.data-safety-text {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    line-height: 1.6;
+    margin-left: 30px;
+}
+/* DATA SAFETY CARD */
+.data-card {
+    margin-top: 24px;
+    border: 1px solid var(--divider);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 700px;
+    margin-left: 30px;
+}
+
+.data-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.data-item:last-child {
+    margin-bottom: 0;
+}
+
+.data-icon {
+    width: 28px;
+    opacity: 0.75;
+}
+
+.data-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.data-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.data-link {
+    color: var(--play-green);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+/* RATINGS & REVIEWS SECTION */
+.ratings-section {
+    margin-top: 50px;
+    max-width: 900px;
+}
+
+.ratings-header {
+   max-width: 1200px;
+   margin: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ratings-title {
+    font-size: 26px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.device-filters {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.filter-chip {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--divider);
+    background: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.filter-chip.active {
+    background: #e6f4ea;
+    border-color: #c8e7d5;
+    color: var(--play-green);
+}
+
+/* big rating box */
+.rating-overview {
+  max-width: 1200px;
+    display: flex;
+    gap: 40px;
+    margin-left: 30px;
+}
+
+.big-rating {
+    font-size: 56px;
+    font-weight: 500;
+}
+
+.big-stars {
+    color: #01875F;
+    margin-top: -8px;
+    font-size: 20px;
+}
+
+/* histogram */
+.hist-row {
+
+    width: 420px;   /* matches Play Store layout */
+
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+
+.bar-track {
+    flex: 1;
+    height: 10px;           /* increased for visibility */
+    background: #E0E3E7;    /* light grey track */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--rating-green);
+    border-radius: inherit;
+}
+
+
+.bar-fill {
+    height: 100%;
+    background: #007D57;   /* EXACT COLOR from your screenshot */
+}
+
+
+/* Reviews list */
+.review-card {
+    margin-top: 40px;
+    margin-left: 30px;
+    display: flex;
+    gap: 16px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--divider);
+}
+
+.review-avatar {
+    width: 42px;
+    height: 42px;
+    background: #ddd;
+    color: #000;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-block {
+    flex: 1;
+}
+
+.review-name {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.review-stars {
+    color: #01875F;
+    font-size: 16px;
+    margin-top: 6px;
+}
+
+.review-date {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.review-text {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.helpful {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.help-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.help-btn {
+    padding: 6px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--divider);
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Developer Response */
+.dev-response {
+    background: #f6f6f6;
+    padding: 20px;
+    border-left: 4px solid #01875F;
+    border-radius: 6px;
+    margin-top: 6px;
+}
+
+.dev-header {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.dev-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+    float: right;
+}
+
+/* ---------------- WHAT'S NEW ---------------- */
+.whats-new-section {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+}
+
+.whats-title {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.whats-text {
+    white-space: pre-line;
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.flag-inappropriate {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Divider line above footer */
+.footer-divider {
+    margin-top: 60px;
+    border-top: 1px solid var(--divider);
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 40px 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.footer-heading {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.footer-link {
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.footer-bottom {
+    max-width: 1300px;
+    margin: 20px auto 40px;
+    padding: 0 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-links {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.country-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.flag-icon {
+    width: 22px;
+    border-radius: 3px;
+}
+
+.profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+/* =======================
+   MOBILE OPTIMIZATION
+   ======================= */
+/* ====================================================
+   EXACT GOOGLE PLAY MOBILE LAYOUT
+   ==================================================== */
+/* ============================================
+   FIX MOBILE PADDING + METADATA + INSTALL BTN
+   ============================================ */
+@media (max-width: 768px) {
+
+    /* Fix entire page padding */
+    .mobile-wrapper {
+        padding: 0;
+        background: #fff;
+        max-width: 430px;
+        margin: 0 auto;
+    }
+
+    /* --------- Header Block (Icon + Text) --------- */
+    .header-area {
+        margin: 0;
+        padding: 16px;
+        flex-direction: row;
+        gap: 14px;
+        align-items: center;
+    }
+
+    .app-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+    }
+
+    .app-title {
+        font-size: 22px;
+        margin: 0;
+    }
+
+    .developer {
+        font-size: 14px;
+        margin: 2px 0;
+    }
+
+    .contains {
+        font-size: 11px;
+        margin-top: 4px;
+    }
+
+    /* --------- Ratings + Downloads + Age --------- */
+    .meta-row {
+        margin: 0;
+        padding: 0 16px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .meta-row span {
+        font-size: 12px;
+    }
+
+    .meta-row span b {
+        font-size: 14px;
+    }
+
+    /* --------- Install Button Block --------- */
+    .install-row {
+        margin: 12px 16px 0 16px;
+        padding: 0;
+        gap: 10px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .install-btn {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 0;
+        border-radius: 8px;
+    }
+
+    .action {
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    /* --------- Device Availability --------- */
+    .avail {
+        margin: 14px 16px;
+        font-size: 13px;
+    }
+
+    /* --------- Screenshot Row --------- */
+    .screenshots {
+        padding-left: 16px;
+        margin-top: 0;
+        gap: 12px;
+    }
+
+    .shot {
+        width: 200px;
+        height: 340px;
+    }
+
+    /* --------- About Section Padding --------- */
+    .section-box {
+        padding: 0 16px;
+        margin-top: 24px;
+    }
+
+    .section-title {
+        margin-left: 0 !important;
+    }
+
+    .section-description {
+        margin-left: 0 !important;
+    }
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- ---------------- TOP NAV ---------------- -->
+<div class="top-bar">
+    <div style="display:flex; align-items:center; gap:28px;">
+        <img src="https://www.gstatic.com/android/market_images/web/play_prism_hlock_2x.png" height="32">
+        <div class="tabs">
+            <div class="active">Apps</div>
+            <div>Games</div>
+            <div>Books</div>
+            <div>Kids</div>
+        </div>
+    </div>
+<img class="profile-icon" 
+     src="https://www.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png">
+
+</div>
+
+<!-- ---------------- MAIN HEADER AREA ---------------- -->
+<div class="header-area">
+
+    <!-- LEFT SIDE -->
+    <div class="left-block">
+
+        <h1 class="app-title">Big Daddy Games</h1>
+
+        <div class="developer">Big Daddy Games & Co</div>
+        <div class="contains">Contains ads</div>
+
+        <!-- Ratings row -->
+        <div class="meta-row">
+            <span>
+                <b>4.6 ★</b>
+                <small style="color:var(--text-secondary)">17.8K reviews</small>
+            </span>
+
+            <span>
+                <b>1M+</b>
+                <small style="color:var(--text-secondary)">Downloads</small>
+            </span>
+
+            <span>
+                <div class="age-box">18+</div>
+                <small style="color:var(--text-secondary)">Rated for 18+</small>
+            </span>
+        </div>
+
+        <!-- Install + Share + Wishlist -->
+        <div class="install-row">
+           <a href="https://bdgms.com//#/register?invitationCode=56871568759" class="install-btn">Install</a>
+
+            <div class="action">
+                <img src="https://fonts.gstatic.com/s/i/materialicons/share/v6/24px.svg" width="20">
+                Share
+            </div>
+
+            <div class="action">
+                <img src="https://fonts.gstatic.com/s/i/materialicons/bookmark_border/v6/24px.svg" width="20">
+                Add to wishlist
+            </div>
+        </div>
+
+        <div class="avail">
+            <img src="https://fonts.gstatic.com/s/i/materialicons/laptop_chromebook/v6/24px.svg" width="22">
+            This app is available for your device
+        </div>
+
+        <!-- Screenshots -->
+        <div class="screenshots">
+    <div class="shot" style="background-image:url('1.png');"></div>
+    <div class="shot" style="background-image:url('2.png');"></div>
+    <div class="shot" style="background-image:url('3.png');"></div>
+    <div class="shot" style="background-image:url('4.png');"></div>
+</div>
+
+
+    </div>
+
+<div class="app-icon" style="background-image:url('icon.png');"></div>
+
+
+</div>
+<!-- ABOUT THIS GAME SECTION -->
+<div class="section-box">
+    <div class="section-title">
+        About this game
+        <img src="https://fonts.gstatic.com/s/i/materialicons/chevron_right/v6/24px.svg">
+    </div>
+
+    <div class="section-description">
+Play Big Daddy Colour Prediction Game, BDG win ,BDG App BDG WIN App,BDG App
+It Can Predict Colors On all Severs Like Parity,Emred etc
+Use 3X Investment Method
+From this app you can do color prediction and earn real money
+This app has some color prediction mod
+It is the first and best color prediction game’s analyzer
+You can earn real money. If you use this tool properly and earn high profit on colour prediction platform
+
+Colour Prediction Game Blue Green Violet Choose 1 Colour & Win Huge Money. Download Color Prediction Game Earn Money Without Investment. Color Prediction Game APK Predict Right Colour Red, Green & Violet Earn Double Money. We Provide Game Hack, Calculator, Earn Money Without Investment & Formula.
+We have released an exciting new colour prediction game that is sure to delight players of all ages! This innovative game allows users to use their skills of deduction and luck to predict the correct colour and win free money. Players can choose from a variety of different levels, each offering varying rewards for successful predictions. In addition, the game also provides daily challenges with bigger prizes at stake.
+The objective in Colour Prediction Game is simple: guess the right colour out of three options presented on the screen and win cash! With vibrant graphics and animations, players will be immersed in a thrilling experience as they attempt to correctly predict which hue will come up next
+
+    </div>
+
+    <div class="update-label">Updated on</div>
+    <div class="update-date">Nov 30, 2025</div>
+
+    <div class="tag-row">
+        <div class="tag-chip">#5 top </div>
+        <div class="tag-chip">Prediction</div>
+        <div class="tag-chip">Casual</div>
+
+    </div>
+</div>
+<div class="section-box">
+    <div class="section-title">
+        Data safety
+        <img src="https://fonts.gstatic.com/s/i/materialicons/chevron_right/v6/24px.svg">
+    </div>
+ <div class="data-safety-text">
+        Safety starts with understanding how developers collect and share your data.
+        Data privacy and security practices may vary based on your use, region, and age.
+        The developer provided this information and may update it over time.
+    </div>
+<!-- DATA SAFETY SECTION -->
+<div class="data-card">
+
+    <!-- DATA ITEM 1 -->
+    <div class="data-item">
+        <img class="data-icon" 
+             src="https://fonts.gstatic.com/s/i/materialiconsround/share/v6/24px.svg">
+        <div>
+            <div class="data-title">No data shared with third parties</div>
+            <div class="data-sub">
+                <a style="color:var(--play-green);">Learn more</a> about how developers declare sharing
+            </div>
+        </div>
+    </div>
+
+    <!-- DATA ITEM 2 -->
+    <div class="data-item">
+        <img class="data-icon" 
+             src="https://fonts.gstatic.com/s/i/materialiconsround/cloud_off/v6/24px.svg">
+        <div>
+            <div class="data-title">No data collected</div>
+            <div class="data-sub">
+                <a style="color:var(--play-green);">Learn more</a> about how developers declare collection
+            </div>
+        </div>
+    </div>
+
+    <!-- DATA ITEM 3 -->
+    <div class="data-item">
+        <img class="data-icon" 
+             src="https://fonts.gstatic.com/s/i/materialiconsround/lock/v6/24px.svg">
+        <div>
+            <div class="data-title">Data is encrypted in transit</div>
+        </div>
+    </div>
+
+    <!-- DATA ITEM 4 -->
+    <div class="data-item">
+        <img class="data-icon" 
+             src="https://fonts.gstatic.com/s/i/materialiconsround/remove_circle_outline/v6/24px.svg">
+        <div>
+            <div class="data-title">Data can’t be deleted</div>
+        </div>
+    </div>
+
+    <div class="data-link">See details</div>
+</div>
+
+<div class="ratings-section">
+
+    <div class="ratings-header">
+        <div class="ratings-title">
+            Ratings and reviews
+            <img src="https://fonts.gstatic.com/s/i/materialicons/chevron_right/v6/24px.svg" width="22">
+        </div>
+
+        <div style="font-size:14px;color:var(--text-secondary);">
+            Ratings and reviews are verified
+        </div>
+    </div>
+
+
+    <!-- Overview -->
+    <div class="rating-overview">
+
+        <div>
+            <div class="big-rating">4.6</div>
+            <div class="big-stars">★★★★★</div>
+            <div style="color:var(--text-secondary); font-size:14px;">1.56M reviews</div>
+        </div>
+
+        <div class="histogram">
+            <div class="hist-row">
+                5 <div class="bar-track"><div class="bar-fill" style="width:90%;"></div></div>
+            </div>
+            <div class="hist-row">
+                4 <div class="bar-track"><div class="bar-fill" style="width:20%;"></div></div>
+            </div>
+            <div class="hist-row">
+                3 <div class="bar-track"><div class="bar-fill" style="width:4%;"></div></div>
+            </div>
+            <div class="hist-row">
+                2 <div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div>
+            </div>
+            <div class="hist-row">
+                1 <div class="bar-track"><div class="bar-fill" style="width:1%;"></div></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Review 1 -->
+    <div class="review-card">
+        <div class="review-avatar">M</div>
+
+        <div class="review-block">
+            <div class="review-name">Mehar Prizu</div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-date">February 1, 2025</div>
+
+            <div class="review-text">
+                I love this game and it's too addicting!!!! Too much I LOVE it! Just that we can swing lots of money…
+            </div>
+
+            <div class="helpful">7,522 people found this review helpful</div>
+
+            <div class="help-buttons">
+                <div class="help-btn">Yes</div>
+                <div class="help-btn">No</div>
+            </div>
+
+            <!-- Developer Response -->
+            <div class="dev-response">
+                <div class="dev-header">
+                    Big Daddy Cames & Co
+                    <span class="dev-date">February 2, 2025</span>
+                </div>
+                <div>
+                    Dear friend, we are really glad that you like our product. Your support and voice are very important to us. Thank you for your review!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review 2 -->
+    <div class="review-card">
+        <div class="review-avatar">Z</div>
+
+        <div class="review-block">
+            <div class="review-name">Zaid Siddiqui</div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-date">December 5, 2025</div>
+
+            <div class="review-text">
+                I play 7k in a single day,Thank you big daddy 😍❤️
+            </div>
+
+            <div class="helpful">26 people found this review helpful</div>
+
+            <div class="help-buttons">
+                <div class="help-btn">Yes</div>
+                <div class="help-btn">No</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- WHAT'S NEW SECTION -->
+<div class="whats-new-section">
+
+    <div class="whats-title">What’s new</div>
+
+    <div class="whats-text">
+Season Zero Update!
+Get ready for the first Party Craft Season!
+
+- Latest Games Added
+- Stable 
+- More Features added
+
+    </div>
+
+    <div class="flag-inappropriate">
+        <img src="https://fonts.gstatic.com/s/i/materialiconsoutlined/flag/v6/24px.svg" width="20">
+        Flag as inappropriate
+    </div>
+
+</div>
+
+<div class="footer-divider"></div>
+<!-- FOOTER -->
+<div class="footer">
+
+    <div class="footer-column">
+        <div class="footer-heading">Google Play</div>
+        <div class="footer-link">Play Pass</div>
+        <div class="footer-link">Play Points</div>
+        <div class="footer-link">Gift cards</div>
+        <div class="footer-link">Redeem</div>
+        <div class="footer-link">Refund policy</div>
+    </div>
+
+    <div class="footer-column">
+        <div class="footer-heading">Kids & family</div>
+        <div class="footer-link">Parent Guide</div>
+        <div class="footer-link">Family sharing</div>
+    </div>
+
+</div>
+
+<div class="footer-bottom">
+
+    <div class="bottom-links">
+        <span>Terms of Service</span>
+        <span>Privacy</span>
+        <span>About Google Play</span>
+        <span>Developers</span>
+        <span>Google Store</span>
+    </div>
+
+    <div class="country-row">
+        <img class="flag-icon" src="https://flagcdn.com/us.svg">
+        United States (English)
+    </div>
+
+</div>
+
+<div class="bottom-nav">
+    <div class="nav-item">
+        <img src="https://fonts.gstatic.com/s/i/materialiconsoutlined/videogame_asset/v6/24px.svg">
+        <div>Games</div>
+    </div>
+
+    <div class="nav-item active">
+        <img src="https://fonts.gstatic.com/s/i/materialiconsoutlined/apps/v6/24px.svg">
+        <div>Apps</div>
+    </div>
+
+    <div class="nav-item">
+        <img src="https://fonts.gstatic.com/s/i/materialiconsoutlined/book/v6/24px.svg">
+        <div>Books</div>
+    </div>
+
+    <div class="nav-item">
+        <img src="https://fonts.gstatic.com/s/i/materialiconsoutlined/child_friendly/v6/24px.svg">
+        <div>Kids</div>
+    </div>
+</div>
+
+</body>
+<div class="mobile-wrapper">
+
 </html>
